@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Experience | Aura Studio</title>
+  <meta name="description" content="We value your feedback. Tell us about your experience with Aura Studio.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Scoped styles for the review page */
+    .review-page {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      background: var(--color-bg-alt);
+    }
+    
+    .review-header {
+      padding: 2rem 5%;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    
+    .review-logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-dark);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .review-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 1.5rem;
+    }
+
+    .review-card {
+      background: var(--color-bg);
+      border-radius: var(--radius-lg);
+      padding: 4rem 3rem;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 20px 40px rgba(28,26,24,0.04);
+      text-align: center;
+      border: 1px solid var(--color-border);
+    }
+
+    .review-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      color: var(--color-dark);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .review-desc {
+      color: var(--color-text);
+      font-size: 1.05rem;
+      margin-bottom: 3rem;
+      max-width: 400px;
+      margin-inline: auto;
+    }
+
+    /* Star Rating System */
+    .star-rating {
+      display: flex;
+      justify-content: center;
+      flex-direction: row-reverse; /* For CSS sibling highlighting */
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .star-rating input { display: none; }
+    
+    .star-rating label {
+      cursor: pointer;
+      color: #E2DBD2; /* Empty star color */
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    
+    .star-rating label svg {
+      width: 48px;
+      height: 48px;
+      fill: currentColor;
+    }
+
+    /* Hover & Active States (using row-reverse trick) */
+    .star-rating label:hover,
+    .star-rating label:hover ~ label,
+    .star-rating input:checked ~ label {
+      color: var(--color-gold);
+      transform: scale(1.1);
+    }
+
+    /* Hidden Sections */
+    .feedback-section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      text-align: left;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-border);
+    }
+    
+    .feedback-section.active {
+      display: block;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Google Review Prompt */
+    .google-prompt {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .google-prompt h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      color: var(--color-dark);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .review-card { padding: 2.5rem 1.5rem; }
+      .star-rating label svg { width: 40px; height: 40px; gap: 0.25rem; }
+    }
+  </style>
+</head>
+<body class="review-page">
+
+  <header class="review-header">
+    <a href="index.html" class="review-logo">Aura.</a>
+  </header>
+
+  <main class="review-main">
+    <div class="review-card">
+      <h1 class="review-heading">Tell us about<br>your experience.</h1>
+      <p class="review-desc">Your feedback is valuable to us. It helps us refine our craft and deliver exceptional spaces.</p>
+
+      <div class="star-rating" id="star-rating">
+        <input type="radio" id="star5" name="rating" value="5" />
+        <label for="star5" title="5 stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </label>
+        
+        <input type="radio" id="star4" name="rating" value="4" />
+        <label for="star4" title="4 stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </label>
+        
+        <input type="radio" id="star3" name="rating" value="3" />
+        <label for="star3" title="3 stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </label>
+        
+        <input type="radio" id="star2" name="rating" value="2" />
+        <label for="star2" title="2 stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </label>
+        
+        <input type="radio" id="star1" name="rating" value="1" />
+        <label for="star1" title="1 star">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </label>
+      </div>
+
+      <!-- Feedback Form (1-3 Stars) -->
+      <div id="feedback-form-section" class="feedback-section">
+        <h3 class="review-heading" style="font-size: 1.4rem; margin-bottom: 0.5rem;">How can we improve?</h3>
+        <p class="review-desc" style="margin-left: 0; text-align: left; margin-bottom: 1.5rem;">Please let us know what went wrong so we can make it right.</p>
+        
+        <form id="whatsapp-form">
+          <div class="form-field full">
+            <label class="form-label" for="client-name">Your Name</label>
+            <input class="form-input" type="text" id="client-name" placeholder="John Smith" required>
+          </div>
+          <div class="form-field full">
+            <label class="form-label" for="feedback-msg">Your Feedback</label>
+            <textarea class="form-textarea" id="feedback-msg" placeholder="Tell us about your experience..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Send via WhatsApp
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Google Review Prompt (4-5 Stars) -->
+      <div id="google-review-section" class="feedback-section">
+        <div class="google-prompt">
+          <h3>We're thrilled you loved it!</h3>
+          <p class="review-desc" style="margin-bottom: 0;">Would you mind taking a moment to share your experience on Google? It means the world to our studio.</p>
+          <a href="#" target="_blank" class="btn btn-gold" id="google-link">
+            Review us on Google
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 12.25c0-.85-.08-1.68-.21-2.48H12v4.54h5.45c-.24 1.4-1.07 2.59-2.25 3.39v2.8h3.64c2.13-1.96 3.36-4.85 3.36-8.25z" fill="#4285F4" stroke="none"/><path d="M12 21.6c2.61 0 4.82-.86 6.45-2.35l-3.64-2.8c-.89.6-2.03.95-3.32.95-2.55 0-4.71-1.72-5.49-4.04H2.25v2.9c1.62 3.23 4.96 5.34 8.75 5.34z" fill="#34A853" stroke="none"/><path d="M6.51 13.36a5.7 5.7 0 0 1-.3-1.87c0-.65.11-1.28.3-1.87v-2.9H2.25a9.66 9.66 0 0 0 0 8.52l4.26-2.88z" fill="#FBBC05" stroke="none"/><path d="M12 5.56c1.42 0 2.69.49 3.69 1.46L18.42 4.3C16.82 2.8 14.61 1.9 12 1.9c-3.79 0-7.13 2.11-8.75 5.34l4.26 2.88c.78-2.32 2.94-4.04 5.49-4.04z" fill="#EA4335" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const radioBtns = document.querySelectorAll('input[name="rating"]');
+      const feedbackForm = document.getElementById('feedback-form-section');
+      const googleSection = document.getElementById('google-review-section');
+      const whatsappForm = document.getElementById('whatsapp-form');
+      
+      // The designer's phone number exactly as requested
+      const designerPhone = "919525933783"; 
+      
+      radioBtns.forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          const rating = parseInt(e.target.value);
+          
+          // Reset sections
+          feedbackForm.classList.remove('active');
+          googleSection.classList.remove('active');
+          
+          // Show appropriate section based on rating
+          setTimeout(() => {
+            if (rating <= 3) {
+              feedbackForm.classList.add('active');
+            } else {
+              googleSection.classList.add('active');
+            }
+          }, 50);
+        });
+      });
+
+      // Handle WhatsApp form submission
+      whatsappForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('client-name').value;
+        const feedback = document.getElementById('feedback-msg').value;
+        const rating = document.querySelector('input[name="rating"]:checked').value;
+        
+        // Construct WhatsApp message
+        const message = `*New Client Feedback*\n\n*Name:* ${name}\n*Rating:* ${rating}/5 Stars\n*Feedback:* ${feedback}`;
+        
+        // Open WhatsApp Web API
+        const whatsappUrl = `https://wa.me/${designerPhone}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+      });
+    });
+  </script>
+</body>
+</html>
