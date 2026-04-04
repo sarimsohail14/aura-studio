@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.style.opacity = '0.7';
       btn.disabled = true;
 
-      fetch('https://sarimsohail14.app.n8n.cloud/webhook-test/d76e693b-e3de-4c9a-8edd-57d6bc79edc0', {
+      fetch('https://sarimsohail14.app.n8n.cloud/webhook/d76e693b-e3de-4c9a-8edd-57d6bc79edc0', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
