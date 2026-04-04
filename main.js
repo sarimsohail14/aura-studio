@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const name = document.getElementById('name').value || 'Not provided';
       const email = document.getElementById('email').value || 'Not provided';
       const phone = document.getElementById('phone').value || 'Not provided';
+      const location = document.getElementById('location').value || 'Not provided';
       
       // Get select element text, not just the value
       const serviceSelect = document.getElementById('service');
@@ -134,37 +135,75 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const message = document.getElementById('message').value || 'No brief provided';
 
-      // WhatsApp logic 
-      const designerPhone = "919525933783";
-      
-      const whatsappMsg = `*New Project Inquiry*\n\n` +
-                          `*Name:* ${name}\n` +
-                          `*Email:* ${email}\n` +
-                          `*Phone:* ${phone}\n` +
-                          `*Service:* ${service}\n\n` +
-                          `*Project Brief:*\n${message}`;
-                          
-      const whatsappUrl = `https://wa.me/${designerPhone}?text=${encodeURIComponent(whatsappMsg)}`;
+      // Get hidden fields
+      const contractor_name = document.getElementById('contractor_name')?.value || 'pradeeb mishra';
+      const contractor_whatsapp = document.getElementById('contractor_whatsapp')?.value || '+919525933783';
+      const business_name = document.getElementById('business_name')?.value || 'Aura Studio';
 
-      // Show success state on button
-      btn.innerHTML = 'Messaging...';
-      btn.style.background = '#4CAF50';
-      btn.style.color = '#fff';
-      btn.style.borderColor = '#4CAF50';
-      
-      setTimeout(() => {
-        // Open WhatsApp in new tab
-        window.open(whatsappUrl, '_blank');
+      // CHANGED: Explicitly mapped form IDs to the expected payload keys specified for n8n.
+      // E.g. 'name' field goes to 'lead_name', 'email' field to 'lead_email', etc.
+      const payload = {
+        contractor_name: contractor_name,
+        contractor_whatsapp: contractor_whatsapp,
+        business_name: business_name,
+        lead_name: name,         // from document.getElementById('name')
+        lead_phone: phone,       // from document.getElementById('phone')
+        lead_email: email,       // from document.getElementById('email')
+        service: service,        // from select dropdown text
+        location: location,      // from document.getElementById('location')
+        message: message         // from document.getElementById('message')
+      };
+
+      // CHANGED: Added temporary console logs for debugging n8n payload mapping
+      console.log('--- DEBUGGING N8N SUBMISSION PAYLOAD ---');
+      console.table(payload);
+      console.log('If fields are blank in n8n, verify that the webhook node is accepting JSON body payload rather than Form-Data.');
+
+      // Show loading state
+      btn.innerHTML = 'Sending...';
+      btn.style.opacity = '0.7';
+      btn.disabled = true;
+
+      fetch('https://sarimsohail14.app.n8n.cloud/webhook-test/d76e693b-e3de-4c9a-8edd-57d6bc79edc0', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
         
-        // Reset button
+        // Success state
         btn.innerHTML = 'Message Sent ✓';
+        btn.style.background = '#4CAF50';
+        btn.style.color = '#fff';
+        btn.style.borderColor = '#4CAF50';
+        btn.style.opacity = '1';
         
         setTimeout(() => {
           btn.innerHTML = originalText;
           btn.style = '';
+          btn.disabled = false;
           contactForm.reset();
         }, 3000);
-      }, 600);
+      })
+      .catch(error => {
+        console.error('Error submitting form:', error);
+        
+        // Error state
+        btn.innerHTML = 'Error. Try Again.';
+        btn.style.background = '#f44336';
+        btn.style.color = '#fff';
+        btn.style.borderColor = '#f44336';
+        btn.style.opacity = '1';
+        
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style = '';
+          btn.disabled = false;
+        }, 3000);
+      });
     });
   }
 

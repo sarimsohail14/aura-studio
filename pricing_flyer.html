@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Josefin Sans', sans-serif;
+    background: #F4F0EB;
+    color: #1C1A18;
+    margin: 0;
+    padding: 2vh 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .flyer-wrapper {
+    width: 1000px;
+    height: 780px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Scale down proportionally based on viewport height so it always fits perfectly */
+    transform: scale(min(1, calc(100vh / 820px)));
+    transform-origin: center center;
+  }
+  h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    color: #C9A84C;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+  }
+  p.subtitle {
+    font-size: 18px;
+    margin-bottom: 60px;
+    color: #1C1A18;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+  .pricing-container {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    justify-content: center;
+    flex: 1;
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px;
+    width: 45%;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+  }
+  .card.pro {
+    background: #1C1A18;
+    color: #ffffff;
+    border: 1px solid #C9A84C;
+    position: relative;
+    transform: scale(1.03);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+  }
+  .badge {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #C9A84C;
+    color: #1C1A18;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 26px;
+    margin: 0 0 10px 0;
+  }
+  .card.pro h2 {
+    color: #C9A84C;
+  }
+  .price {
+    font-size: 20px;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #E2DBD2;
+    display: flex;
+    justify-content: space-between;
+  }
+  .card.pro .price {
+    border-bottom-color: rgba(255,255,255,0.1);
+  }
+  .price span {
+    font-weight: 600;
+    font-size: 24px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+  }
+  li {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: flex-start;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  li span.icon {
+    color: #4CAF50;
+    margin-right: 12px;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  li span.icon.cross {
+    color: #F44336;
+  }
+  .footer {
+    margin-top: 50px;
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    text-align: center;
+    color: #1C1A18;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 30px;
+    width: 100%;
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+<div class="flyer-wrapper">
+  <h1>Aura Studio Digital Growth Systems</h1>
+  <p class="subtitle">Premium Lead Generation & Reputation Management for Luxury Interior Designers</p>
+  
+  <div class="pricing-container">
+    <div class="card">
+      <h2>Basic Package</h2>
+      <p style="margin-top:0; color:#666; font-size: 15px; letter-spacing: 0.05em; text-transform: uppercase;">The Digital Storefront</p>
+      <div class="price">
+        <div>Setup: <span>Rs. 25k</span></div>
+        <div>Monthly: <span>Rs. 0</span></div>
+      </div>
+      <ul>
+        <li><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Premium Custom Built Website</li>
+        <li><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Mobile-Optimized Design</li>
+        <li><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Direct WhatsApp Inquiry Forms</li>
+        <li><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Signature "Smart Review" Filter Page<br>(Filters bad reviews privately)</li>
+        <li><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Proven Review Request Templates</li>
+        <li style="color:#888;"><span class="icon cross"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></span> Manual Review Sending Required</li>
+      </ul>
+    </div>
+    
+    <div class="card pro">
+      <div class="badge">Most Popular</div>
+      <h2>Professional Package</h2>
+      <p style="margin-top:0; color:#aaa; font-size: 15px; letter-spacing: 0.05em; text-transform: uppercase;">Growth & Automation System</p>
+      <div class="price">
+        <div>Setup: <span>Rs. 25k</span></div>
+        <div style="color:#C9A84C;">Monthly: <span>Rs. 3k</span></div>
+      </div>
+      <ul>
+        <li><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Premium Custom Built Website</li>
+        <li><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> <strong>100% Automated</strong> Lead Gen Notifications</li>
+        <li><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> <strong>Automated</strong> Past-Client Review Campaigns</li>
+        <li><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Hands-Free Ongoing Review Requests</li>
+        <li><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> Website Hosting & Maintenance</li>
+      </ul>
+      <p style="font-size: 14px; font-style: italic; color: #888; margin-top: 25px; line-height: 1.4;">
+        * We do the heavy lifting to grow your Google Authority on autopilot while you focus on designing your next masterpiece.
+      </p>
+    </div>
+  </div>
+  
+  <div class="footer">
+    Stop losing luxury clients to outdated websites and low Google ratings. Let's build your authority today.
+  </div>
+</div>
+</body>
+</html>
