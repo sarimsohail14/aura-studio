@@ -207,4 +207,85 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ==========================================
+  // CHAT WIDGET
+  // ==========================================
+  const chatToggle = document.getElementById('chat-toggle');
+  const chatClose = document.getElementById('chat-close');
+  const chatWindow = document.getElementById('chat-window');
+  const liveChatForm = document.getElementById('live-chat-form');
+
+  if (chatToggle && chatClose && chatWindow) {
+    chatToggle.addEventListener('click', () => {
+      chatWindow.classList.add('active');
+    });
+
+    chatClose.addEventListener('click', () => {
+      chatWindow.classList.remove('active');
+    });
+  }
+
+  if (liveChatForm) {
+    liveChatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const btn = liveChatForm.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      
+      const payload = {
+        contractor_name: document.getElementById('contractor_name')?.value || "pradeeb mishra",
+        contractor_whatsapp: document.getElementById('contractor_whatsapp')?.value || "+919525933783",
+        business_name: document.getElementById('business_name')?.value || "Aura Studio",
+        lead_name: document.getElementById('chat-name').value,
+        lead_phone: document.getElementById('chat-phone').value,
+        lead_email: "Not provided via Chat",
+        service: "Live Chat Inquiry",
+        location: "Not provided via Chat",
+        message: document.getElementById('chat-message').value
+      };
+
+      btn.innerHTML = 'Sending...';
+      btn.style.opacity = '0.7';
+      btn.disabled = true;
+
+      fetch('https://sarimsohail14.app.n8n.cloud/webhook/d76e693b-e3de-4c9a-8edd-57d6bc79edc0', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        
+        btn.innerHTML = 'Sent ✓';
+        btn.style.background = '#4CAF50';
+        btn.style.color = '#fff';
+        btn.style.borderColor = '#4CAF50';
+        btn.style.opacity = '1';
+        
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style = '';
+          btn.disabled = false;
+          liveChatForm.reset();
+          chatWindow.classList.remove('active');
+        }, 3000);
+      })
+      .catch(error => {
+        console.error('Error submitting chat form:', error);
+        
+        btn.innerHTML = 'Error';
+        btn.style.background = '#f44336';
+        btn.style.color = '#fff';
+        btn.style.borderColor = '#f44336';
+        btn.style.opacity = '1';
+        
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style = '';
+          btn.disabled = false;
+        }, 3000);
+      });
+    });
+  }
+
 });

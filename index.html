@@ -74,24 +74,26 @@
             </a>
             <a href="#contact" class="btn btn-outline-light">Get a Free Quote</a>
           </div>
+
+          <!-- Inline Stats -->
+          <div class="hero-stats reveal reveal-delay-3">
+            <div class="hero-stat">
+              <div class="hero-stat-num">150+</div>
+              <div class="hero-stat-label">Projects</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">12</div>
+              <div class="hero-stat-label">Years</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-num">8</div>
+              <div class="hero-stat-label">Awards</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Floating stats -->
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num">150+</div>
-          <div class="hero-stat-label">Projects</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">12</div>
-          <div class="hero-stat-label">Years</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">8</div>
-          <div class="hero-stat-label">Awards</div>
-        </div>
-      </div>
+
 
       <div class="scroll-indicator">Scroll</div>
     </section>
@@ -540,6 +542,64 @@
       </div>
     </div>
   </footer>
+
+  <!-- ===================================================
+       CHAT WIDGET
+       =================================================== -->
+  <div class="chat-widget-container" id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <!-- Header -->
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-avatar">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Design Consultant profile">
+          </div>
+          <div class="chat-title">Let us know if you have any questions!</div>
+        </div>
+        <button class="chat-close-btn" id="chat-close" aria-label="Close Chat">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="chat-body">
+        <!-- Message Bubble -->
+        <div class="chat-bubble-container">
+          <div class="chat-avatar small">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Design Consultant small profile">
+          </div>
+          <div class="chat-bubble">
+            This text goes straight to my personal phone. I will make sure to get back to you the second I'm free!
+          </div>
+        </div>
+
+        <!-- Chat Form -->
+        <form class="chat-form" id="live-chat-form">
+          <input type="text" class="chat-input" id="chat-name" placeholder="Name" required>
+          <input type="tel" class="chat-input" id="chat-phone" placeholder="Phone Number" required>
+          <textarea class="chat-textarea" id="chat-message" placeholder="Message" required></textarea>
+          
+          <label class="chat-consent">
+            <input type="checkbox" required>
+            <span>By submitting you agree to receive SMS or e-mails for the provided channel. Rates may be applied.</span>
+          </label>
+          
+          <button type="submit" class="btn btn-gold chat-submit-btn">
+            Send :)
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+      
+      <!-- Footer Attribution -->
+      <div class="chat-footer">Powered by <span>Aura Studio</span></div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button class="chat-toggle-btn" id="chat-toggle" aria-label="Open Chat">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    </button>
+  </div>
 
   <script src="main.js"></script>
 </body>
