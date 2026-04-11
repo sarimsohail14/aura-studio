@@ -233,6 +233,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .navbar.scrolled .nav-link { color: var(--color-mid); }
 .navbar.scrolled .nav-link:hover { color: var(--color-dark); }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .nav-cta {
   flex-shrink: 0;
 }
@@ -984,8 +990,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    RESPONSIVE — 900px (tablets portrait)
    ============================================= */
 @media (max-width: 900px) {
-  /* Navbar – show hamburger, hide links + CTA */
-  .nav-links, .nav-cta { display: none; }
+  /* Navbar – show hamburger, hide links + actions */
+  .nav-links, .nav-actions, .nav-cta { display: none; }
   .hamburger { display: flex; }
 
   /* Hero */
