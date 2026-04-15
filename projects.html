@@ -6,6 +6,39 @@
   <title>Projects | Aura Studio</title>
   <meta name="description" content="Aura Design Studio — A premier interior design and architecture studio specializing in timeless, minimalist luxury spaces.">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* FILTER */
+    .project-item { transition: opacity 0.4s ease, transform 0.4s ease; cursor: pointer; }
+    .project-item.hidden { display: none !important; }
+    .project-item.fade-out { opacity: 0; transform: scale(0.95); pointer-events: none; }
+    .filter-btn { background: transparent; border: 1px solid #d4c090; color: #6b6b6b; padding: 0.5rem 1.4rem; border-radius: 99px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s ease; }
+    .filter-btn.active, .filter-btn:hover { background: #1a1713; color: #fff; border-color: #1a1713; }
+
+    /* MODAL */
+    .project-modal { position: fixed; inset: 0; z-index: 99999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    .project-modal.active { opacity: 1; pointer-events: auto; }
+    .project-modal-bg { position: absolute; inset: 0; background: rgba(10,8,6,0.85); backdrop-filter: blur(8px); }
+    .project-modal-content { position: relative; background: #f5f2ee; width: 90%; max-width: 1100px; height: 85vh; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5); transform: translateY(30px) scale(0.97); transition: transform 0.4s ease; z-index: 1; }
+    .project-modal.active .project-modal-content { transform: translateY(0) scale(1); }
+    .project-modal-close { position: absolute; top: 1.2rem; right: 1.2rem; background: #1a1713; color: #fff; border: none; width: 42px; height: 42px; border-radius: 50%; font-size: 1.6rem; line-height: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 10; transition: background 0.3s, transform 0.3s; }
+    .project-modal-close:hover { background: #c9a84c; transform: scale(1.1); }
+    .project-modal-split { display: flex; width: 100%; height: 100%; }
+    .project-modal-gallery { flex: 0 0 55%; position: relative; height: 100%; background: #1a1713; }
+    .project-modal-gallery > img { width: 100%; height: 100%; object-fit: cover; }
+    .project-modal-thumbs { position: absolute; bottom: 1.2rem; left: 50%; transform: translateX(-50%); display: flex; gap: 0.6rem; padding: 0.5rem 0.8rem; background: rgba(0,0,0,0.45); backdrop-filter: blur(10px); border-radius: 99px; }
+    .modal-thumb { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; border: 2px solid transparent; cursor: pointer; flex-shrink: 0; transition: all 0.3s ease; }
+    .modal-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .modal-thumb.active { border-color: #c9a84c; transform: scale(1.12); }
+    .modal-thumb:hover { border-color: #fff; }
+    .project-modal-info { flex: 1; padding: 3rem 2.5rem; overflow-y: auto; display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
+    .project-meta { font-size: 0.95rem; color: #6b6b6b; margin-top: 0.5rem; }
+    .project-meta strong { color: #1a1713; }
+    @media (max-width: 768px) {
+      .project-modal-split { flex-direction: column; }
+      .project-modal-gallery { flex: 0 0 45%; }
+      .project-modal-info { padding: 1.5rem; justify-content: flex-start; }
+    }
+  </style>
 </head>
 <body>
   <nav class="navbar" id="navbar">
@@ -310,6 +343,86 @@
   </div>
 
   <script src="main.js"></script>
+
+  <script>
+    // ===== PROJECT FILTER =====
+    document.querySelectorAll('.filter-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('.project-item').forEach(function(item) {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // ===== PROJECT MODAL =====
+    var modal = document.getElementById('project-modal');
+    var mainImg = document.getElementById('project-modal-main-img');
+    var thumbsWrap = document.getElementById('project-modal-thumbs');
+    var modalCat = document.getElementById('project-modal-cat');
+    var modalTitle = document.getElementById('project-modal-title');
+    var modalLoc = document.getElementById('project-modal-location');
+    var modalDesc = document.getElementById('project-modal-desc');
+
+    document.querySelectorAll('.project-item').forEach(function(item) {
+      item.addEventListener('click', function() {
+        var cat = (item.querySelector('.bento-card-cat') || {}).innerText || '';
+        var title = (item.querySelector('.bento-card-title') || {}).innerText || '';
+        var loc = item.getAttribute('data-location') || '';
+        var desc = item.getAttribute('data-desc') || '';
+        var photos = (item.getAttribute('data-photos') || '').split('|').filter(Boolean);
+
+        if (modalCat) modalCat.innerText = cat;
+        if (modalTitle) modalTitle.innerText = title;
+        if (modalLoc) modalLoc.innerText = loc;
+        if (modalDesc) modalDesc.innerText = desc;
+
+        if (photos.length && mainImg) {
+          mainImg.src = photos[0];
+          if (thumbsWrap) {
+            thumbsWrap.innerHTML = '';
+            photos.forEach(function(src, idx) {
+              var th = document.createElement('div');
+              th.className = 'modal-thumb' + (idx === 0 ? ' active' : '');
+              var im = document.createElement('img');
+              im.src = src;
+              th.appendChild(im);
+              th.addEventListener('click', function(e) {
+                e.stopPropagation();
+                mainImg.src = src;
+                thumbsWrap.querySelectorAll('.modal-thumb').forEach(function(t) { t.classList.remove('active'); });
+                th.classList.add('active');
+              });
+              thumbsWrap.appendChild(th);
+            });
+          }
+        }
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    document.getElementById('project-modal-close').addEventListener('click', function() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    document.querySelector('.project-modal-bg').addEventListener('click', function() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { modal.classList.remove('active'); document.body.style.overflow = ''; }
+    });
+  </script>
 
 </body>
 </html>
