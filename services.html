@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Aura Studio</title>
+  <meta name="description" content="Aura Design Studio — A premier interior design and architecture studio specializing in timeless, minimalist luxury spaces.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-logo">Aura.</a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html"      class="nav-link">Home</a></li>
+        <li><a href="projects.html"  class="nav-link">Projects</a></li>
+        <li><a href="services.html"  class="nav-link">Services</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html"   class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="tel:9525933783" class="nav-link" style="display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; text-transform: none;">
+          <svg style="width: 16px; height: 16px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.38 2 2 0 0 1 3.58 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          9525933783
+        </a>
+        <a href="contact.html" class="btn btn-outline-light nav-cta" id="nav-cta">
+          Get a Free Quote
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+      </div>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="index.html"         onclick="closeMobileMenu()">Home</a>
+    <a href="projects.html"     onclick="closeMobileMenu()">Projects</a>
+    <a href="services.html"     onclick="closeMobileMenu()">Services</a>
+    <a href="about.html" onclick="closeMobileMenu()">About</a>
+    <a href="contact.html"      onclick="closeMobileMenu()">Contact</a>
+    <a href="contact.html"      onclick="closeMobileMenu()" class="btn btn-dark" style="margin: 0.5rem 2rem; border-radius: 99px; justify-content: center;">Get a Free Quote</a>
+    <a href="tel:9525933783" onclick="closeMobileMenu()" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 0.2rem; color: var(--color-dark); font-size: 0.95rem; font-weight: 600; text-transform: none; padding: 0.5rem;">
+      <svg style="width: 16px; height: 16px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.38 2 2 0 0 1 3.58 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +91 95259 33783
+    </a>
+  </div>
+
+ 
+  
+  <main>
+    
+    <section class="hero page-hero">
+      <div class="hero-bg">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=2600&auto=format&fit=crop" alt="Services Header">
+      </div>
+      <div class="page-hero-overlay"></div>
+      <div class="hero-content container" style="z-index: 2;">
+        <h1 class="hero-title reveal">Our Services.</h1>
+        <p class="hero-subtitle reveal reveal-delay-1">Comprehensive design solutions tailored to your unique lifestyle.</p>
+      </div>
+    </section>
+
+    <section class="page-content-wrapper">
+      <div class="container">
+        
+        <div class="about-grid reveal" style="margin-bottom: 6rem;">
+          <div class="about-content">
+            <span class="section-label">01. Interior Design</span>
+            <h2 class="section-heading">Curated environments.</h2>
+            <span class="gold-line"></span>
+            <p class="section-body">
+              Our interior design service focuses on creating spaces that reflect your personality while ensuring optimal functionality. We source premium materials, curate artwork, and select furnishings that harmonize with the architecture of your home or commercial space. 
+            </p>
+            <p class="section-body" style="margin-top: 1rem;">
+              From conceptual mood boards to final installation, our team manages every detail.
+            </p>
+          </div>
+          <div class="about-image">
+             <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1000&auto=format&fit=crop" alt="Interior Design">
+          </div>
+        </div>
+
+        <div class="about-grid reveal" style="margin-bottom: 6rem; direction: rtl;">
+          <div class="about-content" style="direction: ltr;">
+            <span class="section-label">02. Interior Architecture</span>
+            <h2 class="section-heading">Spatial reimagination.</h2>
+            <span class="gold-line"></span>
+            <p class="section-body">
+              We go beyond surface-level decoration to rethink the fundamental flow and structure of your space. Our architectural interventions include spatial planning, custom millwork, lighting schematics, and complete layout transformations.
+            </p>
+            <p class="section-body" style="margin-top: 1rem;">
+              We work closely with contractors to ensure seamless execution.
+            </p>
+          </div>
+          <div class="about-image" style="direction: ltr;">
+             <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?q=80&w=1000&auto=format&fit=crop" alt="Interior Architecture">
+          </div>
+        </div>
+
+        <div class="about-grid reveal" style="margin-bottom: 4rem;">
+          <div class="about-content">
+            <span class="section-label">03. Custom Furniture</span>
+            <h2 class="section-heading">Bespoke craftsmanship.</h2>
+            <span class="gold-line"></span>
+            <p class="section-body">
+              When the perfect piece doesn't exist, we create it. Our in-house designers conceptualize unique, handcrafted furniture tailored explicitly to the dimensions and aesthetic requirements of your project.
+            </p>
+          </div>
+          <div class="about-image">
+             <img src="https://images.unsplash.com/photo-1599696848652-f0ff23bc911f?q=80&w=1000&auto=format&fit=crop" alt="Custom Furniture">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Brand -->
+        <div class="footer-brand">
+          <span class="footer-logo">Aura.</span>
+          <p class="footer-tagline">Curating exceptional spaces for refined living — with uncompromising attention to detail since 2012.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.13 1 12 1 12s0 3.87.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.87 23 12 23 12s0-3.87-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="#" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col — Studio -->
+        <div class="footer-col">
+          <h4>Studio</h4>
+          <ul>
+            <li><a href="projects.html">Selected Works</a></li>
+            <li><a href="services.html">Our Services</a></li>
+            <li><a href="review.html">Leave a Review</a></li>
+            <li><a href="#">Journal</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+
+        <!-- Col — Services -->
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Interior Design</a></li>
+            <li><a href="#">Interior Architecture</a></li>
+            <li><a href="#">Custom Furniture</a></li>
+            <li><a href="#">Full Renovation</a></li>
+            <li><a href="#">Consultation</a></li>
+          </ul>
+        </div>
+
+        <!-- Col — Contact -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:hello@aurastudio.com">hello@aurastudio.com</a></li>
+            <li><a href="tel:9525933783">+91 95259 33783</a></li>
+            <li><a href="#">14 Mayfair Lane, London</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Aura Design Studio. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================
+       CHAT WIDGET
+       =================================================== -->
+  <div class="chat-widget-container" id="chat-widget">
+    <div class="chat-window" id="chat-window">
+      <!-- Header -->
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-avatar">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Design Consultant profile">
+          </div>
+          <div class="chat-title">Let us know if you have any questions!</div>
+        </div>
+        <button class="chat-close-btn" id="chat-close" aria-label="Close Chat">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Body -->
+      <div class="chat-body">
+        <!-- Message Bubble -->
+        <div class="chat-bubble-container">
+          <div class="chat-avatar small">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Design Consultant small profile">
+          </div>
+          <div class="chat-bubble">
+            This text goes straight to my personal phone. I will make sure to get back to you the second I'm free!
+          </div>
+        </div>
+
+        <!-- Chat Form -->
+        <form class="chat-form" id="live-chat-form">
+          <input type="text" class="chat-input" id="chat-name" placeholder="Name" required>
+          <input type="tel" class="chat-input" id="chat-phone" placeholder="Phone Number" required>
+          <textarea class="chat-textarea" id="chat-message" placeholder="Message" required></textarea>
+          
+          <label class="chat-consent">
+            <input type="checkbox" required>
+            <span>By submitting you agree to receive SMS or e-mails for the provided channel. Rates may be applied.</span>
+          </label>
+          
+          <button type="submit" class="btn btn-gold chat-submit-btn">
+            Send :)
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+      
+      <!-- Footer Attribution -->
+      <div class="chat-footer">Powered by <span>Aura Studio</span></div>
+    </div>
+
+    <!-- Toggle Button -->
+    <button class="chat-toggle-btn" id="chat-toggle" aria-label="Open Chat">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+    </button>
+  </div>
+
+  <script src="main.js"></script>
+
+</body>
+</html>
